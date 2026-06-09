@@ -33,7 +33,7 @@ function saveBookmark(e)
        localStorage.setItem('bookmarks',JSON.stringify(arr));
    }
 
-   document.getElementById('myForm').reset();
+   document.getElementById('myform').reset();
    // Re-fetch bookmarks
    fetchBookmarks();
    
@@ -62,7 +62,7 @@ function fetchBookmarks()
     var bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
     // Loop through the bookmarks
     for(var i =0;i < bookmarks.length;i++){
-      if(bookmarks[i].url == url){
+      if(bookmarks[i].URL == url){
         // Remove from array
         bookmarks.splice(i, 1);
       }
@@ -94,3 +94,7 @@ function validateForm(siteName, siteUrl){
     }
     return url;
   }
+
+if (typeof module !== 'undefined') {
+  module.exports = { validateForm, addhttp, saveBookmark, fetchBookmarks, deleteBookmark };
+}
